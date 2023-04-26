@@ -14,56 +14,56 @@ See the manual : https://qsl.net/g0ftd/other/nano-vna-original/docs/NanoVNA%20Us
 
 Nevertheless some spectra will be recorded to determine qualitatively the response of the two amplification branches. I start by the receive path. 
 
-
-foto setup receive path
+![P4262729](https://user-images.githubusercontent.com/96028811/234713957-c27145bb-7f71-42cd-9b24-5bd601eea3e7.JPG)
 
 Therefore the injection is on the "Antenna" side of the booster and the measurement is at the new optional Rx output (it could also be on the "router" port also on a non-modified booster). Typical signal levels for WiFi are between -100 .. -50 dBm. To not overdrive the amplifier, i start by inserting - 50 dB of attenuation between the stimulus and the antenna port of our booster. The stimulus in the GHz range is a harmonic and should be far below 1 mW. This is to prevent the booster from commuting into TX mod, because on the "Router" side, the port with its carrier detector is by default connected to the receive branch and when the threshold of 3 .. 5 dBm is exceeded, it would commute to Tx mode. Then, i progressively remove attenuators to inject more power.
 
-foto -50 dB, foto schematic
+![P4262731](https://user-images.githubusercontent.com/96028811/234714046-a4c42822-6edd-4870-9fad-1c10ed68bc43.JPG)
 
 With -50 dB attenuation, i obtain a nice spectrum showing on one hand the response of the SAW filter, and on the other hand the gain that is realistically close to 25 dB as on the manual.
 
-foto -20 dB, schematic
+![P4262735](https://user-images.githubusercontent.com/96028811/234714099-2a48a519-7390-42e9-929e-f7b2f4b41c6b.JPG)
 
-With 20 dB of attenuation, i get the same spectrum at an output level increased proportionally to the input. Maybe sslightly less, but i would not consider the measurement as accurate enough to conclude on amplification compression.
+With 20 dB of attenuation, i get the same spectrum at an output level increased proportionally to the input. Maybe slightly less, but i would not consider the measurement as accurate enough to conclude on amplification compression.
 
+![737cropped](https://user-images.githubusercontent.com/96028811/234714261-824d6ffd-a4ba-4758-8b11-3cd23a8cfca3.jpg)
 
-foto -10 dB, schematic
 With only 10 dB attenuation, the spectrum saturates, i dont know if it is the amplifier or the VNA. Therefore, i add - 10 db attenuation to the Opt Rx output and get this spectrum:
 
-foto -10 dB, -10 dB Rx port, schematic
+![738cropped](https://user-images.githubusercontent.com/96028811/234714358-5c3d32dc-a67c-4673-bfec-1c20a7c93d80.jpg)
 
-With both attenuators the spectrum is no longer cropped, so the previous saturation was on the side of the nanoVNA; however it shows that the gain maximumum is now only 22.5 dB versus the roughly 25 dB measured with 50 dB of attenuators. This clearly demonstrates a gain decrease. The manual does not state an absolute maximum rating for the antennna input signal but the input of roughly - 20 dBm is above all realistic scenarios and i do not want to test whether the inout is "bullet proof".
+With both attenuators the spectrum is no longer cropped, so the previous saturation was on the side of the nanoVNA; however it shows that the gain maximumum is now only 22.5 dB versus the roughly 25 dB measured with 50 dB of attenuators. This clearly demonstrates a gain decrease. The manual does not state an absolute maximum rating for the antennna input signal but the input of roughly - 20 dBm (- 10 dBm stimulus, - 10 dB attenuator) is above all realistic scenarios and i do not want to test whether the input is "bullet proof".
 The SAW filtering should tremendously improve the reception in particular in presence of powerful transmitters outside the frequency of interest that otherwise could desensitize the receiver frontend.
 I have no means of measuring the noise figure (homebrew NF measurements are just recently emerging with the tinySA, https://tinysa.org/wiki/pmwiki.php?n=Main.NoiseFactor). I therefore trust the 2.5 db from the specs, which I think is comparable to WiFi receiver frontends or slightly better. It is not something close to the 0.1 dB advertized on our satellite LNBs.
 
 
-
 Next i measure the transmit path:
 
-foto setup transmit path
+![P4262757](https://user-images.githubusercontent.com/96028811/234714590-d646f143-72bd-4832-8737-3345011074f0.JPG)
 
-Therefore, the stimulus of the VNA is preamplified by two SPF5189Z in series by about 20 dB before injecting into the"Router" port of the booster, and the "Antenna" port connected to the VNA input via 40 dB attenuation (two 20 dB attenuators). 
+Therefore, the stimulus of the VNA is preamplified by two SPF5189Z in series by about 20 dB before injecting into the "Router" port of the booster, and the "Antenna" port connected to the VNA input via 40 dB attenuation (two 20 dB attenuators). 
 
 At first i have an additional 3 dB attenuator between the two SPF5189Z as a measure of precaution. The spectrum is this:
 
-foto
+![P4262742](https://user-images.githubusercontent.com/96028811/234714699-8b98b1e7-3b77-4f65-a2df-43deb1a9a1ab.JPG)
 
 It appears that the input signal is at the switching threshold of the booster and the status LED flickers between red and green and the spectrum has a discontinuity.
 
 After taking out the 3 dB attenuator i get this spectrum
 
-foto
+![P4262744](https://user-images.githubusercontent.com/96028811/234714722-9d13232e-df91-4121-8c72-a64c55d24220.JPG)
 
 and the status LED stays green showing the booster remains in Tx mode. 
 
 In the end, i measure approximately the input power of the booster by this setup
 
-foto
+![753cropped](https://user-images.githubusercontent.com/96028811/234714776-144f16b8-4b2c-4467-a043-bb7b09006b3f.jpg)
 
-it varies between 7 and 9 dBm, however, this is prone to error because the power meter also measures the fundamental mode. It has no means of frequency selection and the entered frequency is only a calibration factor. However, 9 dBm would corrresponds to something above the expected switching threshold of my modified booster. The nominal value is 3 .. 5 dBm and with the additional port in parallel it is expected to be some dB higher.
+yielding this reading:
 
-foto display
+![747cropped](https://user-images.githubusercontent.com/96028811/234714845-9b88c02a-7465-4523-9645-3394ab1bc7b1.jpg)
+
+it varies between 7 and 9 dBm, however, this is prone to error because the power meter also measures the fundamental mode. It has no means of frequency selection and the entered frequency is only a calibration factor. However, 9 dBm would corrresponds to something above the expected switching threshold of my modified booster. The nominal value is 3 .. 5 dBm and with the newly added port in parallel it is expected to be some dB higher.
 
 The Tx branch spectrum shows that the output level is as expected, peaking at - 4 dB, corresponding to + 20 dB of the two SPF5189Z, + 16 dB the booster, and - 40 dB of the output attenuators. If the input is assumed to be 9 dBm, we would have 25 dBm output power equaling 316 mW. This is in agreement with the observation that the heatsink of the first output attenuator does not warm up remarkably during some minutes of measurement. The spectrum clearly shows, in contrast to the widespread belief, that the Tx branch indeed does include filtering, although not comparable to the RX branch with its steep SAW filter, but good enough for harmonic suppression.
 
