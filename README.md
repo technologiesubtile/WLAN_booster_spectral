@@ -1,7 +1,7 @@
 Spectral characterization af the EP-AB003 WLAN booster
 heinrich.diesinger@gmx.net, F4HYZ
 
-The EP-AB003 should make a nice radio frontend for 2.4 GHz (and possibly more!) ham radio both as transmitter and receiver. After the integrated SAW (?) filter has attracted my curiosity, i acquire some spectra using the nano VNA. In a previous post i have presented a modification consisting in adding an optional RX port for connecting the booster to a SDR transceiver with separate Rx/Tx ports. The spectral characterization presented here can be performed both on the modified and on the original version of the EP-AB003.
+The EP-AB003 should make a decent radio frontend for 2.4 GHz (and possibly more!) ham radio both as transmitter and receiver. After the integrated SAW (?) filter has attracted my curiosity, i acquire some spectra using the nano VNA. In a previous post i have presented a modification consisting in adding an optional RX port for connecting the booster to a SDR transceiver with separate Rx/Tx ports. The spectral characterization presented here can be performed both on the modified and on the original version of the EP-AB003.
 
 
 Reminder about the drawbacks and limitations of the nanoVNA: 
